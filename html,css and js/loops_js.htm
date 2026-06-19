@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2><i><b><u>Loops in JavaScript</u></b></i></h2>
+    <ul>
+        <li>
+            <h3>while loops</h3>
+        </li>
+    </ul>
+    <script>
+        /*while (condition)
+        {
+        loop- body()code
+        }*/
+        let i = 0 //global scope
+        while (i < 5) { //local scope because of {}
+            i = i + 1
+            console.log(i) //1,2,3,4,5
+        }
+        console.log(i) //5
+
+        //do while loop
+        /*do{
+        loop-body()code
+        }while(condition)*/
+        let j = 0
+        do {                       //block scope
+            j = j + 2
+            console.log(j) //2,4,6,8,10
+
+        } while (j < 9)
+        console.log(j) //10 
+        // do while loop will execute the block of code once before checking the condition.
+
+
+        //for loop
+        /*for(initialization; condition; increment/decrement)
+        {
+        loop-body()code
+        }*/
+        /* for loop rarely go into infinte loop unless specified but while loop can go into infinite loop if condition is always true */
+        for (let k = 0; k < 4; k++) {
+            console.log(k) //0,1,2,3
+            /* step 1 is initialization let k=0 
+            step 2 is condition k<4
+            step 3 print k
+            step 4 increment k by 1 k++ */
+        }
+        console.log(k) //error k is not defined because k is block scope
+
+        /* = : assignment operator means assigning value to a variable
+          == : equality operator means comparing two values no matter the data type
+          === : strict equality operator means comparing two values along with data type 
+          eg 5=="5" is true
+            5==="5" is false
+            i % 2 == 0 means i is even
+            i %2 === 0 means i is even and data type of i is number
+          
+          */
+
+        // print even num from 10 to 30
+        let num1 = +prompt("Enter first number")
+        let num2 = +prompt("Enter second number")
+        for (let a = num1; a <= num2; a++) {
+            if (a % 2 === 0) {
+                document.write(a) //10,12,14,16,18,20,22,24,26,28,30
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

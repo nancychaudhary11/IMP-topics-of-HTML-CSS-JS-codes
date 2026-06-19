@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>printing array with help of loop</h2>
+    <script>
+        let fruits = ["apple", "mango", "banana", "grapes", "kiwi"];
+        // console.log(fruits);
+        for (let i = 0; i < fruits.length; i++) { // here length is used as dunamic way
+            console.log(fruits[i]);
+        }
+
+        //destructuring an array, ES6 feature
+
+        const [fruit1, fruit2, fruit3, fruit4, fruit5] = fruits
+        console.log(fruit1); //apple
+        console.log(fruit2); //mango
+        console.log(fruit3); // banana
+        console.log(fruit4);  // grapes
+        console.log(fruit5); // kiwi
+
+        // also destructuring an array can be written as
+        // const [,fruit,  ...rest] = fruits -> here rest operator
+        // const [, , y, x] = fruits      then     console.log(x) gives kiwi
+
+
+        /* if ... is used left side of equalto it is rest operator and ... is used in right side of equalto it is  spread operator. */
+
+        let abc = [1, 2, 3, 4];
+        let xyz = [5, 6, 7]
+
+        // def = [1,2,3,4,5,6,7]
+
+        //spread operator
+        let def = [...abc, ...xyz]
+        console.log(def); // this will add array into one : [1,2,3,4,5,6,7]
+
+
+        let animal = { // with obj
+            name: "bunny",
+            hobby: "sleeping",
+            type: "cute",
+            smile: "with dimples"
+        }
+
+        let bunny = { ...animal } //spread operator
+        console.log(bunny);
+
+        //with destructuring we can write also as
+        let { name: Rabbit, hobby, type, smile, nature = "supersenior" } = animal
+        console.log(Rabbit);
+        console.log(hobby);
+        console.log(type);
+        console.log(smile);
+        console.log(nature); // can also add key- value pair at the time of destructing, even not written in at the time of obj creation.
+
+
+    </script>
+</body>
+
+</html>

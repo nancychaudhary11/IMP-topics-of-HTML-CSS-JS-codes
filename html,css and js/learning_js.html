@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+
+<body>
+    <h2>Learning Javasript</h2>
+    <script>
+        /*console prints output in developer tool of browser using inspect element
+         document.write prints output on the webpage.  */
+
+
+        let arr = [10, 20, 30, 40, 50];
+        console.log(arr[0]);
+        document.write(arr[2]);
+        //window.alert(arr[0]);
+
+
+        console.log(arr.length);
+        console.log(arr[-1]); //undefined because negative index is not supported in JS
+
+        //inside object key and value pair is stored but not index based like array
+        // let obj ={key:value}
+        let object = {
+            name: "Nancy",
+            lastname: "Chaudhary",
+            age: 22,
+            city: "New Delhi"
+        };
+        console.log(object.name);
+        console.log(object.lastname);
+        console.log(object.age);
+
+        let a = parseInt(prompt("Enter a number")); //parseInt converts string to integer
+        let b = +prompt("Enter another number"); //by default prompt takes input as string,  but + converts it to number
+        // prompt will be shown as a dialog box in browser, takes input from user
+
+        if (a > b) {
+            console.log("a is greater", a);
+            //console.log(`a is greater ${a}`); //backtick is used in place of quotes for string interpolation, give o/p same.
+
+        } else {
+            console.log("b is greater", b);
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Switch case statement</h3>
+    <script>
+        let num = +prompt("Enter any number b/w 10 to 30 multiple of 10"); // + converts string to number
+        /* prompt in js is used to popups a dialog box with input field */
+        switch (num) {
+            case 10:
+                console.log("You entered 10");
+                break;
+            case 20:
+                console.log("You entered 20");
+                break;
+            case 30:
+                console.log("You entered 30");
+                break;
+            default:
+                console.log("OHH! Invalid input");
+        }
+
+        //ternary operator, used as shorthand for if-else statement
+        10 > 20 ? document.write("10 is greater") : document.write("20 is greater"); // if condition is true,it executes first statement and in else  it will execute second statement.
+
+
+
+    </script>
+
+</body>
+
+</html>

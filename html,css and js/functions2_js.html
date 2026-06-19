@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+    <h3><u>Lorem, ipsum dolor. <br>
+            Something to write, hehe!!!
+        </u></h3>
+    </p>
+    <script>
+        //param(REST OPERATOR) form array with indices, in the order of console in calling
+        function sum(...param) { // it will take as array, and bind'em in array with given spaces(if given in code)
+            console.log(param); // output : [], [2], [4, 5], [6, 1, 8], Array(6) [6,1,8,5,3,9]
+
+            let sum = 0
+            for (let i = 0; i < param.length; i++) {
+                sum = sum + param[i]
+            }
+            return sum
+
+        }
+        console.log(sum()); //0
+        console.log(sum(2)); //2
+        console.log(sum(4, 5)); //9
+        console.log(sum(6, 1, 8));//15
+        console.log(sum(6, 1, 8, 5, 3, 9));//32
+
+
+        //Functions written inside an object is called Methods.
+        //let birthyear = 2000 //no use of this, cause i'm accessing obj birthyear there.
+        let student1 = {
+            fname: "Nancy",
+            lsname: "Chaudhary",
+            birthyear: 2003,
+            calcAge: function () {
+                return 2025 - this.birthyear //'this' keyword will replace it's value acc to the particular object.
+                //this is only used when u want to use same fun multiple times.
+            }, // comma cumpolsary
+            fullName: function () {
+                return (this.fname + " " + this.lsname)
+            }
+        }
+        console.log(student1)
+        console.log(student1.calcAge()); //22
+
+        // coping one obj to another with all values
+        let student2 = { ...student1 }
+        student2.birthyear = 2010
+        student2.fname = "Shreya",
+            student2.lsname = "Choudhary"
+        console.log(student2)
+        console.log(student2.calcAge()); //15
+        console.log(student1.fullName)
+        console.log(student1.fullName())
+        // HERE MUST UNDERSTAND THE DIFF OF WRITING THE WAY OF METHODS
+        console.log(student2.fullName)
+        console.log(student2.fullName())
+
+
+
+        //Function returning another function
+        let greet = function (greeting) {
+            return function (name) {
+                console.log(`${greeting}, ${name}.`);
+            }
+
+        }
+        greet("Very Goood morning")("Beautiful")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--fav q of interviewer-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resposive</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* vh gives the calculation based on viewport height, in diff devices*/
+            background-color: #1a1a1a;
+
+
+        }
+
+        .resposive-div {
+            /* default styles for larger screens,it will look this in laptop and desktop */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;
+            font-size: xx-large;
+            width: 100%;
+            background-color: brown;
+        }
+
+        @media(max-width:600px) {
+
+            /* @media rule is used to apply different styles for different screen sizes */
+            /* for mobile, when screen size is less than 600px, it will apply these styles */
+            .resposive-div {
+                background-color: aqua;
+                color: black;
+
+            }
+        }
+
+        @media(min-width:601px) and (max-width:1000px) {
+            .resposive-div {
+                background-color: cadetblue;
+            }
+        }
+
+        @media print {
+
+            /* when we print the page, we can change color and font style*/
+            .resposive-div {
+                background-color: chartreuse;
+                font-size: 100px;
+                font-family: cursive;
+            }
+        }
+
+        @media(orientation: portrait) {
+            .resposive-div {
+                font-family: cursive;
+                background-color: hotpink;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resposive-div">This div changes color based on the screen. </div>
+
+</body>
+
+</html>

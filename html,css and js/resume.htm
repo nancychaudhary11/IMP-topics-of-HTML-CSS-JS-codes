@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Slate Gray & Cool Mint -->
+    <!-- Application Structure Plan: A single-page, vertical-scrolling layout with a sticky navigation bar for quick access to sections (Hero, About, Skills, Education, Projects, Contact). This structure is intuitive and follows a standard resume flow. The key design choice is an interactive 'Skills Dashboard' featuring a radar chart to visually and engagingly present the candidate's strengths, moving beyond a static list. This makes the resume more dynamic and helps recruiters quickly assess capabilities. Project/experience sections use an expandable card layout to present information progressively without overwhelming the user. -->
+    <!-- Visualization & Content Choices: 1. Skills List -> Goal: Compare/Inform -> Viz: Radar Chart -> Interaction: Hover tooltips -> Justification: Provides a holistic, at-a-glance view of proficiency across core domains, more impactful than a simple list -> Library: Chart.js (Canvas). 2. Skills List -> Goal: Inform -> Viz: Categorized lists with proficiency bars -> Interaction: Hover tooltips -> Justification: Provides granular detail on specific technologies in a visually scannable format -> Library/Method: HTML/CSS/Tailwind. 3. Projects List -> Goal: Organize/Inform -> Viz: Expandable Cards -> Interaction: Click to show/hide details -> Justification: Keeps the UI clean by showing summaries first, allowing users to drill down into projects of interest -> Library/Method: HTML/CSS/JS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .skill-bar-fill {
+            transition: width 0.8s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-slate-900">
+                Nancy Chaudhary
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-slate-600 hover:text-teal-600 transition duration-300">About</a>
+                <a href="#skills" class="text-slate-600 hover:text-teal-600 transition duration-300">Skills</a>
+                <a href="#education" class="text-slate-600 hover:text-teal-600 transition duration-300">Education</a>
+                <a href="#projects" class="text-slate-600 hover:text-teal-600 transition duration-300">Projects</a>
+                <a href="#contact" class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 transition duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-800">
+                <span class="w-6 h-0.5 bg-slate-800 block mb-1.5"></span>
+                <span class="w-6 h-0.5 bg-slate-800 block"></span>
+                <span class="w-4 h-0.5 bg-slate-800 block mt-1.5"></span>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-slate-600 hover:text-teal-600">About</a>
+            <a href="#skills" class="block py-2 text-slate-600 hover:text-teal-600">Skills</a>
+            <a href="#education" class="block py-2 text-slate-600 hover:text-teal-600">Education</a>
+            <a href="#projects" class="block py-2 text-slate-600 hover:text-teal-600">Projects</a>
+            <a href="#contact" class="block mt-2 bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="hero" class="text-center py-20">
+            <h1 class="text-5xl md:text-7xl font-bold text-slate-900 leading-tight">Aspiring Software Developer<br>& AI Enthusiast</h1>
+            <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">A third-year Computer Science student passionate about building elegant software solutions and exploring the frontiers of artificial intelligence.</p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="mailto:nancychaudhary413@gmail.com" class="text-slate-600 hover:text-teal-600 transition duration-300 text-2xl" title="Email">📧</a>
+                <a href="https://www.linkedin.com/in/nancy-chaudhary-0b1a58289/" class="text-slate-600 hover:text-teal-600 transition duration-300 text-2xl" title="LinkedIn">🔗</a>
+                <a href="https://github.com/nancychaudhary11" class="text-slate-600 hover:text-teal-600 transition duration-300 text-2xl" title="GitHub">💻</a>
+            </div>
+        </section>
+
+        <section id="about" class="py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-teal-500 mx-auto mb-8"></div>
+                <p class="text-lg text-slate-600 leading-relaxed">I am a passionate and skilled B.Tech Computer Science student with a strong foundation in software development, algorithms, and artificial intelligence. My coursework in DBMS, DAA, and Machine Learning has honed my problem-solving and analytical abilities. I am proficient in C, Java, Python, and web technologies, and I'm eager to apply this expertise to contribute to innovative teams. I am currently preparing for internships and placements with a focus on DSA, system design, and building real-world projects, and I am open to opportunities in software development, AI/ML, and freelancing both in India and abroad.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="py-16 bg-white rounded-xl shadow-md">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Technical Skills</h2>
+                <p class="text-slate-600 mb-12">A visual overview of my core competencies and technical proficiency.</p>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="chart-container">
+                        <canvas id="skillsRadarChart"></canvas>
+                    </div>
+                    <div id="skills-list" class="text-left space-y-6">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Education</h2>
+                <div class="w-20 h-1 bg-teal-500 mx-auto mb-8"></div>
+                <div class="bg-white p-8 rounded-xl shadow-md text-left">
+                    <h3 class="text-2xl font-bold text-slate-800">IMS Engineering College, Ghaziabad</h3>
+                    <p class="text-lg text-teal-600 font-medium">B.Tech in Computer Science</p>
+                    <p class="text-md text-slate-500 mb-6">Expected Graduation: May, 2027</p>
+                    <h4 class="font-semibold text-slate-700 mb-3">Relevant Coursework:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Database Management Systems</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Design & Analysis of Algorithms</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Web Technologies</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Machine Learning</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Data Analytics</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">Artificial Intelligence</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-16">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Projects</h2>
+                <p class="text-slate-600 mb-12">A selection of projects demonstrating my skills and interests. Click to learn more.</p>
+                <div id="projects-grid" class="grid md:grid-cols-2 gap-8 text-left">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16">
+            <div class="max-w-2xl mx-auto text-center bg-teal-500 text-white p-12 rounded-xl shadow-lg">
+                <h2 class="text-4xl font-bold mb-4">Let's Connect!</h2>
+                <p class="mb-8">I'm actively seeking opportunities and would love to hear from you. Whether you have a question or just want to say hi, feel free to reach out.</p>
+                <a href="mailto:nancychaudhary413@gmail.com" class="bg-white text-teal-600 font-bold py-3 px-6 rounded-md hover:bg-slate-100 transition duration-300 inline-block">Say Hello</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-500">
+            <p>&copy; 2025 Nancy Chaudhary. Built with passion and code.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.hash !== '') {
+                        const targetElement = document.querySelector(link.hash);
+                        if (targetElement) {
+                             if (!mobileMenu.classList.contains('hidden')) {
+                                mobileMenu.classList.add('hidden');
+                            }
+                        }
+                    }
+                });
+            });
+
+            const skillsData = {
+                categories: [
+                    {
+                        name: 'Programming Languages',
+                        skills: [
+                            { name: 'Python', level: 90 },
+                            { name: 'Java (Core & Backend)', level: 85 },
+                            { name: 'JavaScript', level: 80 },
+                            { name: 'C', level: 70 }
+                        ]
+                    },
+                    {
+                        name: 'Web Development',
+                        skills: [
+                            { name: 'HTML & CSS', level: 95 },
+                            { name: 'Backend Development', level: 80 },
+                        ]
+                    },
+                    {
+                        name: 'Core Areas',
+                        skills: [
+                            { name: 'Data Structures & Algorithms', level: 90 },
+                            { name: 'Generative AI', level: 75 },
+                            { name: 'System Design (in progress)', level: 60 }
+                        ]
+                    }
+                ],
+                radar: {
+                    labels: ['Backend Dev', 'Algorithms', 'AI / ML', 'System Design', 'Frontend Dev'],
+                    data: [85, 90, 75, 60, 80]
+                }
+            };
+            
+            const skillsListContainer = document.getElementById('skills-list');
+            skillsData.categories.forEach(category => {
+                const categoryTitle = document.createElement('h3');
+                categoryTitle.className = 'text-xl font-semibold text-slate-700';
+                categoryTitle.textContent = category.name;
+                skillsListContainer.appendChild(categoryTitle);
+
+                category.skills.forEach(skill => {
+                    const skillWrapper = document.createElement('div');
+                    const label = document.createElement('p');
+                    label.className = 'text-slate-600 mb-1';
+                    label.textContent = skill.name;
+                    skillWrapper.appendChild(label);
+
+                    const barBg = document.createElement('div');
+                    barBg.className = 'w-full bg-slate-200 rounded-full h-2.5';
+                    
+                    const barFill = document.createElement('div');
+                    barFill.className = 'bg-teal-500 h-2.5 rounded-full skill-bar-fill';
+                    barFill.style.width = '0%';
+                    setTimeout(() => { barFill.style.width = `${skill.level}%`; }, 100);
+
+                    barBg.appendChild(barFill);
+                    skillWrapper.appendChild(barBg);
+                    skillsListContainer.appendChild(skillWrapper);
+                });
+            });
+
+            const radarCtx = document.getElementById('skillsRadarChart').getContext('2d');
+            const skillsRadarChart = new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: skillsData.radar.labels,
+                    datasets: [{
+                        label: 'Proficiency',
+                        data: skillsData.radar.data,
+                        backgroundColor: 'rgba(20, 184, 166, 0.2)',
+                        borderColor: 'rgb(13, 148, 136)',
+                        pointBackgroundColor: 'rgb(13, 148, 136)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(13, 148, 136)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14,
+                                },
+                                color: '#334155'
+                            },
+                            ticks: {
+                                backdropColor: '#f8fafc',
+                                color: '#64748b'
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            const projectsData = [
+                {
+                    title: "AI-Powered News Summarizer",
+                    category: "Generative AI",
+                    description: "A web application that takes a news article URL and uses a Generative AI model to provide a concise, coherent summary.",
+                    details: "The backend, built with Python and Flask, handles the web scraping and API calls to a pre-trained language model. The frontend is a simple interface built with HTML/CSS and JavaScript to submit URLs and display the resulting summary. This project demonstrates skills in API integration, backend development, and practical AI application.",
+                    tech: ["Python", "Flask", "JavaScript", "Generative AI"]
+                },
+                {
+                    title: "E-commerce Backend System",
+                    category: "Backend Development",
+                    description: "A robust backend for an e-commerce platform featuring user authentication, product catalog management, and order processing.",
+                    details: "Developed using Java with the Spring Boot framework, this system provides a complete set of RESTful APIs for managing products, users, and orders. It uses a relational database (PostgreSQL) for data persistence and implements secure authentication using JWT. This project showcases backend development and database management skills.",
+                    tech: ["Java", "Spring Boot", "PostgreSQL", "REST API", "JWT"]
+                },
+                 {
+                    title: "Algorithm Visualizer",
+                    category: "Data Structures & Algorithms",
+                    description: "An interactive web tool that visualizes common sorting and pathfinding algorithms like Bubble Sort, Merge Sort, and Dijkstra's.",
+                    details: "Built with vanilla JavaScript, HTML, and CSS, this application uses the HTML Canvas to draw and animate the steps of various algorithms. It helps in understanding the logic and efficiency of different data structures and algorithms in a visual, hands-on manner. This project highlights a strong understanding of DSA and frontend JavaScript.",
+                    tech: ["JavaScript", "HTML Canvas", "CSS", "DSA"]
+                }
+            ];
+            
+            const projectsGrid = document.getElementById('projects-grid');
+            projectsData.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'bg-white p-6 rounded-xl shadow-md transition-shadow hover:shadow-lg';
+                
+                let techHtml = project.tech.map(t => `<span class="bg-slate-200 text-slate-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">${t}</span>`).join('');
+
+                projectCard.innerHTML = `
+                    <p class="text-sm font-medium text-teal-600 mb-1">${project.category}</p>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">${project.title}</h3>
+                    <p class="text-slate-600 mb-4">${project.description}</p>
+                    <div class="mb-4">
+                        ${techHtml}
+                    </div>
+                    <div class="details hidden mt-4 pt-4 border-t border-slate-200">
+                        <p class="text-slate-600">${project.details}</p>
+                    </div>
+                    <button class="learn-more-btn font-semibold text-teal-600 hover:text-teal-700">
+                        Learn More <span class="arrow">▼</span>
+                    </button>
+                `;
+                projectsGrid.appendChild(projectCard);
+            });
+            
+            projectsGrid.addEventListener('click', function(e) {
+                const target = e.target.closest('.learn-more-btn');
+                if (target) {
+                    const details = target.previousElementSibling;
+                    const arrow = target.querySelector('.arrow');
+                    const isHidden = details.classList.contains('hidden');
+                    details.classList.toggle('hidden');
+                    target.innerHTML = isHidden ? `Show Less <span class="arrow">▲</span>` : `Learn More <span class="arrow">▼</span>`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

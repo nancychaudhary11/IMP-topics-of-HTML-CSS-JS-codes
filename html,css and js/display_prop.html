@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .para1,
+        .para2 {
+            border: 2dvb solid lightgreen;
+            /*dvb= device viewport block*/
+            display: inline-block;
+            /* dispaly:inline;
+             in inline u cant set h and w property but in inline-block u can set h and w */
+            height: 100px;
+            width: 200px;
+        }
+
+        span {
+            display: inline;
+            border: 2px solid blue;
+            height: 100px;
+            width: 200px;
+            /* here, there no effect while using inline with display of h, w both */
+        }
+    </style>
+</head>
+
+<body>
+    <!--<h2>Learning Block and Inline elements</h2>
+    <p class="para1">Lorem ipsum dolor sit amet.</p>
+    <p class="para2">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+    <br><br>
+    <span>Hww Hello</span><span> everyone</span> inline element-->
+    <br><br>
+    <!--span Does not start on a new line
+   Takes only the space required by its content
+
+   immmpp ----- Width and height are not applied normally (unless display is changed)-->
+
+    <h2>Images of flowers</h2>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoBRYGcV330DDD-L3mZFtWgadSE39yrFCFlQ&s" alt="Image"
+        width="250px">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPCnjtYHR-JqDzR0UHJduZ_pHI9LveRmtYug&s" alt="Image"
+        height="100%">
+
+
+</body>
+
+</html>

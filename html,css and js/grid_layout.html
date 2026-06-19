@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--viewport means: the device in which we view-->
+    <title>GRID</title>
+    <style>
+        .container {
+            height: 95vh;
+            /*95% of viewport height*/
+            display: grid;
+            /*grid divides into rows and columns*/
+            /* grid-template-rows: repeat(2, 100px) 200px;*/
+            grid-template-rows: 1fr 2fr 1fr;
+            /*fr = fraction of available space*/
+            grid-template-columns: 2fr 1fr 1fr;
+        }
+
+        .header {
+            border: 2px solid black;
+            background-color: lightgreen;
+            /* grid-row: start/end  */
+            grid-row: 1 / 2;
+            /*use to define which row and how many rows to span*/
+
+            /* grid-col: start/end */
+            grid-column: 1/4;
+
+        }
+
+        .footer {
+            border: 2px solid black;
+            background-color: lightgreen;
+            grid-row: 3/4;
+            grid-column: 1/4;
+            padding: 5px;
+
+        }
+
+        .article {
+            border: 2px solid black;
+            background-color: whitesmoke;
+            grid-row: 2/3;
+            grid-column: 1/2;
+        }
+
+        .Shreya {
+            border: 2px solid black;
+            background-color: beige;
+            grid-row: 2/3;
+            grid-column: 2/3;
+
+        }
+
+        .navbar {
+            border: 2px solid black;
+            background-color: lightskyblue;
+            grid-row: 2/3;
+            grid-column: 3/4;
+        }
+
+        .box {
+            /* to style IN all boxes, text , centering etc*/
+            font-size: 2rem;
+            /* rem = root em, relative to root font size, 1rem = 16px */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"> <!--div.container-->
+        <div class="header box">Header</div> <!--div.header.box-->
+        <div class="article box">Article</div>
+        <div class="shreya box">Shreya</div>
+        <div class="navbar box">Navbar</div>
+        <div class="footer box">Footer</div>
+    </div>
+
+</body>
+
+</html>

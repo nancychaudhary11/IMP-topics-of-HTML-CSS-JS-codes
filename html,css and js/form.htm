@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+</head>
+
+<body>
+
+    <form>
+        <label for="name">Name: <input type="text" id="name" placeholder="Nancy"></label>
+        <br>
+        <br>
+        <label for="username">Username: <input type="text" placeholder="nancy_11" id="username">
+        </label>
+        <br>
+        <br>
+        <label for="email">Email: <input type="email" placeholder="nancychaudhary@gmail.com" required>
+        </label>
+        <br>
+        <br>
+
+        <label for="password"> Password: <input type="password" required>
+        </label>
+        <br>
+        <br>
+        <label for="">Gender: </label>
+        <label for=""> Male: <input type="radio" name="gender" id="male"></label>
+        <label for="">Female: <input type="radio" name="gender" id="female"></label>
+        <!--here name combines the both n let u select only one, in radio button-->
+        <br>
+        <br>
+        <label for="">Games:</label>
+        <label for=""> <input type="checkbox" name="" id="">Cricket</label>
+        <label for=""> <input type="checkbox" name="" id="">Volleyball</label>
+        <label for=""> <input type="checkbox" name="" id="">Kho Kho</label>
+        <br>
+        <br>
+        <label for="country">Country:
+            <select name="country" id="country">
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="uk">UK</option>
+                <option value="australia">Australia</option>
+            </select>
+
+        </label>
+        <br>
+        <br>
+        <label for="foods">Choose ur Fav food:</label>
+        <!-- input list and datalist id should be same-->
+        <input list="foods" name="food-choice" id="food">
+        <datalist id="foods">
+            <option value="icecream">Ice cream</option>
+            <option value="sweets">sweets</option>
+            <option value="burger">Burger</option>
+            <option value="cold drink">Cold drink</option>
+        </datalist>
+        <br>
+        <br>
+
+        <label for=""> Phone number: <input type="number"></label>
+        <br>
+        <br>
+        <label for=""> ID proof: <input type="file" name="" id="" accept=".pdf, .jpg, .docx"></label>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+</body>
+
+</html>

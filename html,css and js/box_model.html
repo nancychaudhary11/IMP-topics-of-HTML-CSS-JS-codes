@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        .para1 {
+            border: 2px solid blueviolet;
+            background-color: azure;
+            /*
+            padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+            padding-left: 10px;*/
+
+            padding: 10px 20px 30px 10px;
+            /*top right bottom left*/
+            padding: 10px 20px 30px;
+            /*if any value is missing then left will take value of right*/
+            padding: -10px;
+            /*negative padding is not allowed*/
+
+
+        }
+
+        .para2 {
+            font-size: larger;
+            border: 2px dotted violet;
+            background-color: bisque;
+            padding: 20px;
+            /*margin-top: 10px;
+            margin-bottom: 20px;
+            margin-left: 40px;
+            margin-right: 20px;*/
+
+            margin: 2% 30px 40% 20px;
+            /*this follows clock analogy*/
+            /*top right bottom left*/
+            /*margin: -20px margin can be negative, but it will cut the element from the outer side*/
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Box Model</h2>
+    <h3><u>Padding</u></h3>
+    <p class="para1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Quos explicabo consequuntur vel eveniet.
+    </p> <br><br>
+    <h3><u>Margin</u></h3>
+    <p class="para2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quis nemo commodi, illo vitae doloribus?
+    </p>
+
+</body>
+
+</html>

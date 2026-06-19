@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3><b>Functins in JS</b></h3>
+    <script>
+        /*syntax of function
+        function func_name(parameters) {
+            //logic
+
+            // return/console.log , it is better to use return.
+        }
+        // call the function
+        func_name(arguments) //arguments r the values or data which i want to pass to the fun. */
+
+        //Function Declaration
+        function sum(a, b = 6) {
+            return (a + b);
+            // after return whateverr u can it will not work, once u write the return statement the execution of code is finished.
+        }
+        console.log(sum()); // NaN
+        console.log(sum(2)); // 2+6 = 8, taken default value of b here.
+        // otherwise it will choose the given value of b, as below :
+        console.log(sum(4, 5)); //9
+        console.log(sum(6, 1, 8)); //7, use first two
+
+
+        // Function Expression
+        let greet = function () {
+            console.log("Hello, how r u?");
+
+        }
+        greet() // with console.log it will return whole fun in print.
+
+
+
+
+
+
+        //Arrow function, it is very short tech to write func.
+        let meet = () => ("Let's Meet") // by default this fun will return, no need to write return here.
+        let fun = () => { return ("Let's Go") } // but if u write return, write it in bracs.
+        console.log(meet());
+        console.log(fun());
+
+
+
+
+        function calcAge(birthyear) {
+            return 2025 - birthyear
+        }
+        console.log(calcAge(2003)); //22
+
+    </script>
+
+</body>
+
+</html>

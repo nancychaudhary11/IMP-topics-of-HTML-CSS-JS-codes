@@ -1,0 +1,35 @@
+/* css code*/
+h2 {
+    color: rgb(145, 41, 127);
+    background-color: bisque;
+    padding: 10px;
+}
+
+.para1,
+pre {
+    /*class selector*/
+    font-size: large;
+    color: blue;
+    border: 2px solid yellowgreen;
+    padding: 10px;
+
+
+}
+
+#para2 {
+    /*id selector*/
+    word-spacing: 3px;
+    font-size: medium;
+    color: black;
+    background-color: antiquewhite;
+    padding: 20px;
+
+
+}
+
+/* means of cascading is like water flowing from top
+ to bottom if there are two same 
+selectors the one which is at the bottom will be applied*/
+
+
+/*inline css has more priority than internal and external css*/
